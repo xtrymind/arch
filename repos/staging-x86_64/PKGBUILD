@@ -2,8 +2,8 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-#pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-age       # Build kernel with a different name
+pkgbase=linux               # Build stock -ARCH kernel
+#pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.16
 pkgver=4.16.8
 pkgrel=1
@@ -61,13 +61,13 @@ prepare() {
   patch -Np1 -i ../0003-Partially-revert-swiotlb-remove-various-exports.patch
 
   cat ../config - >.config <<END
-CONFIG_LOCALVERSION="-age"
+CONFIG_LOCALVERSION="${_kernelname}"
 CONFIG_LOCALVERSION_AUTO=n
 END
 
   # set extraversion to pkgrel and empty localversion
-  #sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
-  sed   -e "/^EXTRAVERSION =/aLOCALVERSION =" \
+  sed -e "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" \
+      -e "/^EXTRAVERSION =/aLOCALVERSION =" \
       -i Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
@@ -76,7 +76,6 @@ END
   # get kernel version
   make prepare
 
-  make LSMOD=$HOME/.config/modprobed.db localmodconfig
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
@@ -92,7 +91,7 @@ END
 build() {
   cd ${_srcname}
 
-  time make -j$(nproc --all) bzImage modules
+  make bzImage modules
 }
 
 _package() {
