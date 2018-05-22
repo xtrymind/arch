@@ -3,7 +3,7 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
-pkgbase=linux-age       # Build kernel with a different name
+pkgbase=linux-flat       # Build kernel with a different name
 _srcname=linux-4.16
 pkgver=4.16.10
 pkgrel=1
