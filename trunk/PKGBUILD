@@ -76,7 +76,7 @@ END
   # get kernel version
   make prepare
 
-  make LSMOD=$HOME/.config/modprobed.db localmodconfig
+  make LSMOD=${HOME}/.config/modprobed.db localmodconfig
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
   #make menuconfig # CLI menu for configuration
