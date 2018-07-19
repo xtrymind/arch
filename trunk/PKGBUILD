@@ -32,7 +32,7 @@ sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
             '146f68fa5ded4c33f3bafba23224ed8fae2a27f701257c899c6a4a7fa61eb6d0'
             'SKIP'
-            'f8e890eac9779a89009c1e2339f757e9781864df09805211fad005146fe2578b'
+            '14b163cc4387da20a75206c3ffb7663985b6ec580879913df6fc4783794dfa28'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'b059097d6e55a05d598c0b006643d20fe5141d8e948e6cd97963e19e29942416'
@@ -81,9 +81,9 @@ END
   # get kernel version
   make prepare
 
-  make LSMOD=${HOME}/.config/modprobed.db localmodconfig
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
+  #make LSMOD=${HOME}/.config/modprobed.db localmodconfig # using localmodconfig with modprobed-db
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
