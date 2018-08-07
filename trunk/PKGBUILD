@@ -9,13 +9,13 @@ _srcver=4.17.12-arch1
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/archlinux/linux/commits/v$_srcver"
+url="https://github.com/xtrymind/linux/commits/v$_srcver"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://github.com/archlinux/linux?signed#tag=v$_srcver"
+  "$_srcname::git+https://github.com/xtrymind/linux?signed#tag=v$_srcver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -25,6 +25,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
+  '301FD2E54A2F033E3F8AD323A5473ACABEEB1B3C'  # Dede Dindin Qudsy (xtrymind)
 )
 sha256sums=('SKIP'
             'cfe9bb0ad0ea3d6b3f55b663e847cbf9b6915e3f894b60e6c6750ac5b2a5020c'
