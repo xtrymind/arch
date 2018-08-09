@@ -5,9 +5,9 @@
 
 #pkgbase=linux            # Build stock -ARCH kernel
 pkgbase=linux-flat        # Build kernel with a different name
-_srcver=4.17.13-arch
+_srcver=4.17.14-arch
 pkgver=${_srcver//-/.}
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/xtrymind/linux/commits/v$_srcver"
 license=(GPL2)
