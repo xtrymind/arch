@@ -4,17 +4,17 @@
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.20-arch1
+_srcver=4.20-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://github.com/xtrymind/linux/commits/v$_srcver"
+url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_srcname=archlinux-linux
+_srcname=flat-linux
 source=(
-  "$_srcname::git+https://github.com/xtrymind/linux?signed#tag=v$_srcver"
+  "$_srcname::git+https://github.com/xtrymind/flat-linux.git"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
