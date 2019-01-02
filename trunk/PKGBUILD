@@ -134,6 +134,7 @@ _package-headers() {
   install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile.spec
   cp -t "$builddir" -a scripts
 
   # add objtool for external module building and enabled VALIDATION_STACK option
