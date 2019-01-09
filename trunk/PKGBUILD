@@ -6,7 +6,7 @@ pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=4.20.1-flat
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
@@ -112,11 +112,11 @@ _package() {
   true && install=$install.pkg
 
   # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../linux.preset | install -Dm644 /dev/stdin \
+  sed "$subst" "$pkgsrc"/linux.preset | install -Dm644 /dev/stdin \
     "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
+  sed "$subst" "$pkgsrc"/60-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
+  sed "$subst" "$pkgsrc"/90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Fixing permissions..."
