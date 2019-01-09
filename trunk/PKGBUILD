@@ -6,16 +6,14 @@ pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=4.20-flat
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
 makedepends=(xmlto kmod inetutils bc libelf git python-sphinx graphviz)
 options=('!strip')
-_srcname=flat-linux
+_srcname=${LINUX_FOLDER}
 source=(
-  "$_srcname::git+https://github.com/xtrymind/flat-linux.git"
-  config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
@@ -25,9 +23,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('SKIP'
-            '4f7a4529239b80d4ecc0a65e402d5315b1079e27af65ab85f5afea41349b0d81'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+sha256sums=('ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
 
@@ -35,7 +31,11 @@ _kernelname=${pkgbase#linux}
 : ${_kernelname:=-ARCH}
 
 prepare() {
+  pkgsrc=$(pwd)
   cd $_srcname
+
+  msg2 "Cleanup source folder"
+  git clean -dfx
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -52,12 +52,12 @@ prepare() {
   done
 
   msg2 "Setting config..."
-  cp ../config .config
-  make olddefconfig
+  #cp ../config .config
+  make flat_defconfig
 
   # Kill EXTRAVERSION
   sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
-  make -s kernelrelease > ../version
+  make -s kernelrelease > "$pkgsrc"/version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
