@@ -58,7 +58,7 @@ prepare() {
   # Kill EXTRAVERSION
   sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
   make -s kernelrelease > "$pkgsrc"/version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<$pkgsrc/version)"
 }
 
 build() {
@@ -76,6 +76,7 @@ _package() {
 
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local pkgsrc="$(pwd)"
 
   cd $_srcname
 
@@ -92,7 +93,7 @@ _package() {
   # with version file for building modules and running depmod from hook
   local extramodules="extramodules$_kernelname"
   local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
+  install -Dt "$extradir" -m644 "$pkgsrc/version"
   ln -sr "$extradir" "$modulesdir/extramodules"
 
   # remove build and source links
@@ -125,7 +126,8 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local pkgsrc="$(pwd)"
+  local builddir="$pkgdir/usr/lib/modules/$(<$pkgsrc/version)/build"
 
   cd $_srcname
 
@@ -207,7 +209,8 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local pkgsrc="$(pwd)"
+  local builddir="$pkgdir/usr/lib/modules/$(<$pkgsrc/version)/build"
 
   cd $_srcname
 
