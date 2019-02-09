@@ -4,7 +4,7 @@
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.20.6-flat
+_srcver=4.20.7-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -54,8 +54,8 @@ prepare() {
   done
 
   msg2 "Setting config..."
-  #cp ../config .config
-  make flat_defconfig
+  cp "$pkgsrc"/config .config
+  make olddefconfig
 
   # Kill EXTRAVERSION
   sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
