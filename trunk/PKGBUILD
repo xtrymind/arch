@@ -2,9 +2,9 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-flat          # Build stock -flat kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.20.7-arch1
+_srcver=4.20.7-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -39,8 +39,8 @@ prepare() {
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  # echo "-$pkgrel" > localversion.10-pkgrel
+  echo "-flat" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -55,13 +55,15 @@ prepare() {
   cp ../config .config
   make olddefconfig
 
+  # Kill EXTRAVERSION
+  sed -e "/^EXTRAVERSION =/s/=.*/=/" -i Makefile
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make -j$(nproc --all) bzImage modules htmldocs
 }
 
 _package() {
