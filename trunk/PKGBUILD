@@ -4,7 +4,7 @@
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=4.20.13-flat
+_srcver=5.0.0-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -137,7 +137,6 @@ _package-headers() {
   install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
-  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile.spec
   cp -t "$builddir" -a scripts
 
   # add objtool for external module building and enabled VALIDATION_STACK option
