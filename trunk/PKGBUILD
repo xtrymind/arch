@@ -4,7 +4,7 @@
 
 pkgbase=linux-flat          # Build stock -flat kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.0.0-flat
+_srcver=5.0.1-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
@@ -24,7 +24,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('1ae6bd5bb8a0733eb42dd646a86d0d7a0d6f96922f2bb909dbd7a8e5b09e5d01'
+sha256sums=('2c8929b54fb3d97cb1844ba2a22589e3456624956647b74a60c5147bdbd54efd'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
