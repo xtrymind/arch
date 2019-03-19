@@ -4,7 +4,7 @@
 
 pkgbase=linux-flat          # Build stock -flat kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.0.2-flat
+_srcver=5.0.3-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
