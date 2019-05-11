@@ -4,9 +4,9 @@
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.1-flat
+_srcver=5.1.1-flat
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
