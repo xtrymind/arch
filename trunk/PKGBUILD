@@ -1,10 +1,10 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.1.16-flat
+_srcver=5.2-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
