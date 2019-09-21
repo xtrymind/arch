@@ -4,9 +4,9 @@
 
 pkgbase=linux-flat          # Build kernel with a different name
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.2.14-flat
+_srcver=5.3.0-flat
 pkgver=${_srcver//-/.}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
@@ -24,7 +24,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('52c87aa69366d745e53347091b4db5f70ed37d62de3511139bcdc2b5b27f6280'
+sha256sums=('db91d886fb3aefadfe20ac311e02959b94712ead0094a280ba23bce8d7f1df1e'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
