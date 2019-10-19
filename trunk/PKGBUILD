@@ -2,13 +2,13 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-flat          # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcver=5.3.7-arch1
+_srcver=5.3.7-flat
 pkgver=${_srcver//-/.}
 pkgrel=1
 arch=(x86_64)
-url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
+url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
@@ -17,7 +17,7 @@ makedepends=(
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
+  "$_srcname::git+$url"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -42,7 +42,7 @@ prepare() {
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
+  #echo "-$pkgrel" > localversion.10-pkgrel
   echo "$_kernelname" > localversion.20-pkgname
 
   local src
