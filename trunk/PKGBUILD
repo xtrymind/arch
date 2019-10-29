@@ -6,7 +6,7 @@ pkgbase=linux-flat          # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcver=5.3.7-flat
 pkgver=${_srcver//-/.}
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="https://github.com/xtrymind/flat-linux"
 license=(GPL2)
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '3717d303a4021f2f2aa3d9d8f452080abb6051e9b2d083e70c57ea3ffa11289a'
+            'b7ed041ae92edb85ef7716b85b9dd621df26025d664ba149a2df22b5d1d6c3fd'
             '452b8d4d71e1565ca91b1bebb280693549222ef51c47ba8964e411b2d461699c'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65')
