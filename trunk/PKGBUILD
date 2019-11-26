@@ -2,12 +2,12 @@
 
 pkgbase=linux-flat
 pkgver=5.4
-pkgrel=1
+pkgrel=2
 _srcver=${pkgver}-flat
 url="https://github.com/xtrymind/flat-linux"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf git)
+makedepends=(bc kmod libelf git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -20,7 +20,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'c08f720fa909f56464d2b50ad12aafce60bdab870a3ed3a1e65d864816a6fd28')
+            'a84b69e444d50d30c70ac8d83cecc68bb16ec8a216c47438df3608cbde7cdb16')
 
 prepare() {
   cd $_srcname
