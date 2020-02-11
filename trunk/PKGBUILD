@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-flat
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 _srcver=${pkgver}-flat
 url="https://github.com/xtrymind/flat-linux"
@@ -44,7 +44,7 @@ prepare() {
   make olddefconfig
 
   make -s kernelrelease > version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
