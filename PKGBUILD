@@ -75,9 +75,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -153,9 +150,6 @@ _package-headers() {
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  msg2 "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
