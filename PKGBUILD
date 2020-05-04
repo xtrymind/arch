@@ -49,7 +49,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make -j$(nproc --all) bzImage modules
+  make -s -j$(nproc --all) bzImage modules
 }
 
 _package() {
@@ -71,7 +71,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make -s INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
