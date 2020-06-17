@@ -7,7 +7,7 @@ _srcver=${pkgver}-flat
 url="https://github.com/xtrymind/flat-linux"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf git)
+makedepends=(bc kmod libelf git pahole)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -71,7 +71,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make -s INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make -s INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -146,6 +146,9 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
+
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
