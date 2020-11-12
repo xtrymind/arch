@@ -20,7 +20,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '089925cae1319f8252cf0098ea7ee48f4c1b27d3b341f1cacb992cf00467b496')
+            'ff9cc8d6bb9bcd85b944068ef85ec1d9166d443896afdb38115970e05ff36edb')
 
 prepare() {
   cd $_srcname
