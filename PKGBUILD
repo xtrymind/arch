@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-flat
-pkgver=5.11.16
+pkgver=5.12
 pkgrel=1
 _srcver=${pkgver}-flat
 url="https://github.com/xtrymind/flat-linux"
@@ -20,7 +20,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e50d7d887cce7cf107b5b696fafe435730152ed2578a2965bb36ce4d3cea89c2')
+            '2bfab4d9d755b4647b41680ba200961c4983fcb7d7a665eb43add9e667df16e3')
 
 prepare() {
   cd $_srcname
