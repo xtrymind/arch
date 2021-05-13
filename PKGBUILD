@@ -2,7 +2,7 @@
 
 pkgbase=linux-flat
 pkgver=5.12.2
-pkgrel=1
+pkgrel=2
 _srcver=${pkgver}-flat
 url="https://github.com/xtrymind/flat-linux"
 arch=(x86_64)
@@ -20,7 +20,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '2bfab4d9d755b4647b41680ba200961c4983fcb7d7a665eb43add9e667df16e3')
+            '7ef08aa122ae1ea39a0aeabe460778b31ab4f7bb6e332f58470f702de6bb95e3')
 
 prepare() {
   cd $_srcname
